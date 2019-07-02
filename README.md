@@ -6,7 +6,7 @@ Specifically this was designed for published experiment configurations from [COS
 
 To use:
 
-1. Add the following lines to a `.travis.yaml` file for a configuration repository:
+1. Add the following lines to a `.travis.yml` file for a configuration repository:
 
 ```yaml
 language: python
