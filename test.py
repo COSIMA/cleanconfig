@@ -53,28 +53,31 @@ def setup_module(module):
 
     if verbose: print(model_config)
  
+@pytest.mark.basic
 def test_project():
 
     if 'project' in model_config:
         pytest.fail("project should not be defined: \nproject: {}".format(model_config['project']))
 
+@pytest.mark.basic
 def test_shortpath():
 
     if 'shortpath' in model_config:
         pytest.fail("shortpath should not be defined: \nshortpath: {}".format(model_config['shortpath']))
 
+@pytest.mark.basic
 def test_postscript():
 
     if 'postscript' in model_config:
         pytest.fail("postscript should not be defined: \npostscript: {}".format(model_config['postscript']))
 
-def test_abslab():
+def test_rellab():
 
     if 'laboratory' in model_config:
         if os.path.isabs(model_config['laboratory']):
             pytest.fail("laboratory should not be absolute: \nlaboratory: {}".format(model_config['laboratory']))
 
-def test_absinput():
+def test_absinputs():
 
     # Input directories must be absolute, and pointing some shared space
     for dir in insist_array(model_config.get('input', [])):
@@ -82,7 +85,7 @@ def test_absinput():
             pytest.fail("input should be absolute: \ninput: {}".format(dir))
 
 
-def test_submodel_inputs():
+def test_submodel_absinputs():
 
     for model in model_config.get('submodels',[]):
         # Input directories must be absolute, and pointing some shared space
@@ -90,7 +93,7 @@ def test_submodel_inputs():
             if not os.path.isabs(dir):
                 pytest.fail("input for submodel {} should be absolute: \ninput: {}".format(model['name'], dir))
 
-def test_submodel_executables():
+def test_submodel_executable_abspaths():
 
     for model in model_config.get('submodels',[]):
         if not os.path.isabs(model['exe']):
