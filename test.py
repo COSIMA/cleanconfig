@@ -84,7 +84,6 @@ def test_absinputs():
         if not os.path.isabs(dir):
             pytest.fail("input should be absolute: \ninput: {}".format(dir))
 
-
 def test_submodel_absinputs():
 
     for model in model_config.get('submodels',[]):
@@ -99,12 +98,21 @@ def test_submodel_executable_abspaths():
         if not os.path.isabs(model['exe']):
             pytest.fail("executable for submodel {} should be absolute: \nexe: {}".format(model['name'], model['exe']))
 
-def test_collate_options():
+def test_collate_dict():
 
     cconf = model_config.get('collate','')
-
     if type(cconf) is bool:
         pytest.fail("Collate config should be updated to a dictionary")
+
+def test_collate_executable_abspath():
+
+    cconf = model_config.get('collate')
+
+    if cconf is None or 'exe' not in cconf:
+        pytest.fail("Collate executable must be defined")
+
+    if not os.path.isabs(cconf['exe']):
+        pytest.fail("Collate executable must be an absolute path")
 
 
 
