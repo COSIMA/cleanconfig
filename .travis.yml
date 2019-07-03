@@ -18,4 +18,4 @@ before_script:
     - git clone https://github.com/COSIMA/1deg_jra55_iaf.git testconfig
 
 script:
-    - pytest test.py
+    - pytest test.py -s
