@@ -40,5 +40,7 @@ def find_and_test_paths(filepath):
     
 def test_all_shell_script_paths():
 
+    print("")
     for filepath in glob.glob("*.sh"):
+        print("Checking {}".format(filepath))
         assert(find_and_test_paths(filepath))
