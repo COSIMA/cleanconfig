@@ -92,8 +92,8 @@ def test_submodel_absinputs():
 
 def test_submodel_executable_abspaths():
     """Model executables should always be absolute paths for published configs"""
-    if 'exe' in config and not os.path.isabs(config['exe']):
-        pytest.fail("executable for model should be absolute: \nexe: {}".format(config['exe']))
+    if 'exe' in model_config and not os.path.isabs(model_config['exe']):
+        pytest.fail("executable for model should be absolute: \nexe: {}".format(model_config['exe']))
     for model in model_config.get('submodels',[]):
         if 'exe' not in model or not os.path.isabs(model['exe']):
             pytest.fail("executable for submodel {} should be absolute: \nexe: {}".format(model['name'], model['exe']))
