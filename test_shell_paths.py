@@ -28,7 +28,10 @@ def find_and_test_paths(filepath):
         line = line.split('#')[0]
         m = bashvar.match(line)
         if m is not None:
-            if not m.group(2).startswith(boguspathstart):
+            match = m.group(2)
+            # Insist the match has at least one '/' character so we know
+            # it is probably a path
+            if '/' in match and not match.startswith(boguspathstart):
                 msg = """Error in {file}.\nStart of shell path does not match {bogus}:\n{line}
                       """.format(file=filepath, bogus=boguspathstart, line=line)
                 raise ValueError(msg) 
