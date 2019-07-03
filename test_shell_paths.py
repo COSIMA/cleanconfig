@@ -15,7 +15,7 @@ limitations under the License.
 import pytest
 import sys, os, time, glob, re
 
-bashvar = re.compile(r'(\w+)=([\w|/]*)')
+bashvar = re.compile(r'\s*(\w+)=([\w|/]*)')
 boguspathstart = '/ERROR/SET'
 
 def find_and_test_paths(filepath):
