@@ -99,7 +99,12 @@ def test_submodel_executable_abspaths():
         if not os.path.isabs(model['exe']):
             pytest.fail("executable for submodel {} should be absolute: \nexe: {}".format(model['name'], model['exe']))
 
+def test_collate_options():
 
+    cconf = model_config.get('collate','')
+
+    if type(cconf) is bool:
+        pytest.fail("Collate config should be updated to a dictionary")
 
 
 
