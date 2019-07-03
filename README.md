@@ -53,3 +53,15 @@ script:
     - (cd cleanconfig && pytest -s -m basic test.py)
 ```
 will run all tests marked as `basic`.
+
+There is another, rather specialised, test which will read all shell scripts (files ending in `.sh`)
+and check that all paths defined in the script are deliberately bogus. This is defined by the path
+beginning with `/ERROR/SET`. This is because scripts like this are generally for synching data to 
+another location. So a user cannot accidentally overwrite existing data inadvertently if the paths
+are not valid.
+
+This test can be invoked by adding the line
+````
+    - pytest -s cleanconfig/test_shell_paths.py
+````
+to the `script` section of the `travis.yml` file

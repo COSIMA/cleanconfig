@@ -19,3 +19,4 @@ before_script:
 
 script:
     - pytest test.py -s
+    - (cd testconfig && pytest -s ../test_shell_paths.py)
