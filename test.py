@@ -107,11 +107,10 @@ def test_collate_dict():
 def test_collate_executable_abspath():
     """Collate executable should be defined and an absolute path as new users will not have
        this in their path. Should check for model type """
-
     # Would like to use a decorator for this, but skipif can't be dynamically set
     if fms: pytest.skip('Not a valid test for non FMS models')
-
     cconf = model_config.get('collate',None)
+    if type(cconf) is bool: pytest.skip('Not a valid test until test_collate_dict passes')
     if cconf is None or 'exe' not in cconf:
         pytest.fail("Collate executable must be defined")
     if not os.path.isabs(cconf['exe']):
@@ -120,6 +119,7 @@ def test_collate_executable_abspath():
 def test_collate_flags():
     """Best practice is to use default settings for collate flags"""
     cconf = model_config.get('collate',None)
+    if type(cconf) is bool: pytest.skip('Not a valid test until test_collate_dict passes')
     if cconf is not None and 'flags' in cconf:
         pytest.fail("Custom collate flags should not be defined")
 
