@@ -12,11 +12,11 @@ install:
 
 env:
   global:
-    - CCONF_DIR=${TRAVIS_BUILD_DIR}/testconfig
 
 before_script:
     - git clone https://github.com/COSIMA/1deg_jra55_iaf.git testconfig
 
 script:
-    - pytest test.py -s
+    - CCONF_DIR=testfiles/access-esm-1.5 pytest test.py -s
+    - CCONF_DIR=testfiles/access-om2-1deg_jra55_iaf pytest test.py -s
     - (cd testconfig && pytest -s ../test_shell_paths.py)

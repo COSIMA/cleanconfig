@@ -96,8 +96,10 @@ def test_submodel_executable_abspaths():
         pytest.fail("executable for model should be absolute: \nexe: {}".format(model_config['exe']))
     for model in model_config.get('submodels',[]):
         if 'exe' not in model:
-            pytest.fail("No executable for submodel {}".format(model['name']))
-        if not os.path.isabs(model['exe']):
+            # Allow models such as couplers that have no executable
+            if 'ncpus' in model and model['ncpus'] != 0:
+                pytest.fail("No executable for submodel {}".format(model['name']))
+        elif not os.path.isabs(model['exe']):
             pytest.fail("executable for submodel {} should be absolute: \nexe: {}".format(model['name'], model['exe']))
 
 def test_collate_dict():
