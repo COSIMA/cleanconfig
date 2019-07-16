@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/coecms/esm-pre-industrial.svg?branch=master)](https://travis-ci.org/coecms/esm-pre-industrial)
+
 ## Test Config
 
 This is a small test suite to make sure `payu` configuration files are suitable for cloning and running for any user.
