@@ -99,7 +99,7 @@ def test_submodel_executable_abspaths():
             # Allow models such as couplers that have no executable
             if 'ncpus' in model and model['ncpus'] != 0:
                 pytest.fail("No executable for submodel {}".format(model['name']))
-        if not os.path.isabs(model['exe']):
+        elif not os.path.isabs(model['exe']):
             pytest.fail("executable for submodel {} should be absolute: \nexe: {}".format(model['name'], model['exe']))
 
 def test_collate_dict():
