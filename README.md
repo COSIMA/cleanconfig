@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/coecms/esm-pre-industrial.svg?branch=master)](https://travis-ci.org/coecms/esm-pre-industrial)
+[![Build Status](https://travis-ci.org/COSIMA/cleanconfig.svg?branch=master)](https://travis-ci.org/coecms/esm-pre-industrial)
 
 ## Test Config
 
