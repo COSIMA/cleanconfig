@@ -127,9 +127,8 @@ def test_collate_flags():
     if cconf is not None and 'flags' in cconf:
         pytest.fail("Custom collate flags should not be defined")
 
-
-
-
-
-
-
+def test_qsub_flags():
+    """Check there are no storage flags set in qsub_flags, as these will be ignored"""
+    qflags = model_config.get('qsub_flags',None)
+    if qflags is not None and 'storage' in qflags:
+        pytest.fail("Storage flags defined in qsub_flags will be silently ignored")
